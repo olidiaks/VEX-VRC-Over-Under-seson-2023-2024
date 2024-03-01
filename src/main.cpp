@@ -66,7 +66,5 @@ void opcontrol() {
 		                 (pros::lcd::read_buttons() & LCD_BTN_RIGHT) >> 0); // Prints status of the emulated screen LCDs
 						 
 		// Arcade control scheme
-		leftDriveTrain = master.get_analog(ANALOG_LEFT_Y); // Sets left motor voltage
-		rightDriveTrain = master.get_analog(ANALOG_RIGHT_Y); // Sets right motor voltage
 	}
 }

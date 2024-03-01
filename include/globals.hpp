@@ -1,13 +1,13 @@
 #include "main.h"
 //Motors.
-extern pros::Motor leftFrontDiveTrain;
-extern pros::Motor rightFrontDiveTrain;
-extern pros::Motor leftBackDiveTrain;
-extern pros::Motor rightBackDiveTrain;
-extern pros::Motor launcherA;
-extern pros::Motor launcherB;
-extern pros::Motor triaballGraberA;
-extern pros::Motor triaballGraberB;
+extern pros::Motor leftFrontDiveTrainMotor;
+extern pros::Motor rightFrontDiveTrainMotor;
+extern pros::Motor leftBackDiveTrainMotor;
+extern pros::Motor rightBackDiveTrainMotor;
+extern pros::Motor launcherAMotor;
+extern pros::Motor launcherBMotor;
+extern pros::Motor leftTriaballGraberMotor;
+extern pros::Motor rightTriaballGraberMotor;
 
 //Controller
 extern pros::Controller master;

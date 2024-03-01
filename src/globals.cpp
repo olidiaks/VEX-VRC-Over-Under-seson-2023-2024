@@ -10,4 +10,4 @@ pros::Motor leftTriaballGraberMotor(10);
 pros::Motor rightTriaballGraberMotor(1);
 
 //Controler
-pros::Controller master(pros::E_CONTROLLER_MASTER);
+pros::Controller controller(pros::E_CONTROLLER_MASTER);

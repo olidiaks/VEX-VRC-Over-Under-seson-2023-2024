@@ -10,4 +10,4 @@ extern pros::Motor leftTriaballGraberMotor;
 extern pros::Motor rightTriaballGraberMotor;
 
 //Controller
-extern pros::Controller master;
+extern pros::Controller controller;

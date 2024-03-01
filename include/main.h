@@ -77,6 +77,7 @@ void opcontrol(void);
 //#include <iostream>
 #include "globals.hpp"
 #include "drive.hpp"
+#include "motorsHendlers.hpp"
 #endif
 
 #endif  // _PROS_MAIN_H_

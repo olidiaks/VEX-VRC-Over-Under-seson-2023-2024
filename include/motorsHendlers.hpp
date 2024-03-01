@@ -1,0 +1,3 @@
+#include "main.h"
+
+void twoDigitalButtonsTwoMotorsHandler(const pros::controller_analog_e_t buttonPositive, const pros::controller_analog_e_t buttonNegative, const pros::Motor motorA, pros::Motor motorB, const int voltageMultiplayer = 127);

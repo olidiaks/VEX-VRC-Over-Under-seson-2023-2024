@@ -1,4 +1,5 @@
 #include "main.h"
+#include "pros/misc.h"
 
 
 
@@ -67,5 +68,6 @@ void opcontrol() {
 						 
 		// Arcade control scheme
 		setMotorsToDriveFromControler(100);
+		twoDigitalButtonsTwoMotorsHandler(pros::E_CONTROLLER_DIGITAL_UP, pros::E_CONTROLLER_DIGITAL_DOWN, launcherAMotor, launcherBMotor, 127);
 	}
 }

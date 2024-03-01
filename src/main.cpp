@@ -66,5 +66,6 @@ void opcontrol() {
 		                 (pros::lcd::read_buttons() & LCD_BTN_RIGHT) >> 0); // Prints status of the emulated screen LCDs
 						 
 		// Arcade control scheme
+		setMotorsToDriveFromControler(100);
 	}
 }

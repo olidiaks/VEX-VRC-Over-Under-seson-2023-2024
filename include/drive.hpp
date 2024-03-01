@@ -1,3 +1,5 @@
 #include "main.h"
 
-void setDriveTrain(int leftMotors, int rightMotors);
+void setDriveTrain(const int leftMotors, const int rightMotors);
+
+void setMotorsToDriveFromControler(const int speedPrecent);

@@ -1,8 +1,6 @@
 #include "main.h"
 #include "pros/misc.h"
 
-
-
 /**
  * Runs initialization code. This occurs as soon as the program is started.
  *
@@ -10,8 +8,8 @@
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
-	pros::lcd::initialize();
-	pros::lcd::set_text(1, "Hello PROS User!");
+  pros::lcd::initialize();
+  pros::lcd::set_text(1, "Hello PROS User!");
 }
 
 /**
@@ -61,15 +59,21 @@ void autonomous() {}
 
 void opcontrol() {
 
-	while (true) {
-		pros::lcd::print(0, "%d %d %d", (pros::lcd::read_buttons() & LCD_BTN_LEFT) >> 2,
-		                 (pros::lcd::read_buttons() & LCD_BTN_CENTER) >> 1,
-		                 (pros::lcd::read_buttons() & LCD_BTN_RIGHT) >> 0); // Prints status of the emulated screen LCDs
-						 
-		// Arcade control scheme
-		setMotorsToDriveFromControler(100);
-		twoDigitalButtonsTwoMotorsHandler(pros::E_CONTROLLER_DIGITAL_UP, pros::E_CONTROLLER_DIGITAL_DOWN, launcherAMotor, launcherBMotor, 127);
-		twoDigitalButtonsTwoMotorsHandler(pros::E_CONTROLLER_DIGITAL_L1, pros::E_CONTROLLER_DIGITAL_R1, leftTriaballGraberMotor, rightTriaballGraberMotor, 127);
-		updateStatusOfAllToogleButtons();
-	}
+  while (true) {
+    pros::lcd::print(0, "%d %d %d",
+                     (pros::lcd::read_buttons() & LCD_BTN_LEFT) >> 2,
+                     (pros::lcd::read_buttons() & LCD_BTN_CENTER) >> 1,
+                     (pros::lcd::read_buttons() & LCD_BTN_RIGHT) >>
+                         0); // Prints status of the emulated screen LCDs
+
+    // Arcade control scheme
+    setMotorsToDriveFromControler(100);
+    twoDigitalButtonsTwoMotorsHandler(pros::E_CONTROLLER_DIGITAL_UP,
+                                      pros::E_CONTROLLER_DIGITAL_DOWN,
+                                      launcherAMotor, launcherBMotor, 127);
+    twoDigitalButtonsTwoMotorsHandler(
+        pros::E_CONTROLLER_DIGITAL_L1, pros::E_CONTROLLER_DIGITAL_R1,
+        leftTriaballGraberMotor, rightTriaballGraberMotor, 127);
+    updateStatusOfAllToogleButtons();
+  }
 }

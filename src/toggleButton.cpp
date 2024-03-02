@@ -19,6 +19,4 @@ const void ToggleButton::updateStatus() {
     wasPressedLastTimeWhenWasCheck = false;
 }
 
-void updateStatusOfAllToogleButtons(){
-
-}
+void updateStatusOfAllToogleButtons() {}

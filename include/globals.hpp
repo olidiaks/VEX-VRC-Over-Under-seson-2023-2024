@@ -1,5 +1,5 @@
 #include "main.h"
-//Motors.
+// Motors.
 extern pros::Motor leftFrontDiveTrainMotor;
 extern pros::Motor rightFrontDiveTrainMotor;
 extern pros::Motor leftBackDiveTrainMotor;
@@ -9,5 +9,5 @@ extern pros::Motor launcherBMotor;
 extern pros::Motor leftTriaballGraberMotor;
 extern pros::Motor rightTriaballGraberMotor;
 
-//Controller
+// Controller
 extern pros::Controller controller;

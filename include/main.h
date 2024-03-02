@@ -79,6 +79,7 @@ void opcontrol(void);
 #include "drive.hpp"
 #include "motorsHendlers.hpp"
 #include "airSystem.hpp"
+#include "toggleButton.hpp"
 #endif
 
 #endif  // _PROS_MAIN_H_

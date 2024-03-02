@@ -1,5 +1,6 @@
 #include "main.h"
 #include "pros/adi.h"
+#include "pros/misc.h"
 
 bool isLeftOpen = false;
 bool isRightOpen = false;
@@ -19,4 +20,13 @@ void airSystemHandler(const bool isToogle, const bool isOpen) {
   rightAirSystemHandler(isToogle, isOpen);
 }
 
-void airSystemSetAirSystemBasedOnControllerAction() {}
+ToggleButton leftToggleButtonForAirStyem(pros::E_CONTROLLER_DIGITAL_L2);
+ToggleButton rightToggleButtonForAirSystem(pros::E_CONTROLLER_DIGITAL_R2);
+
+void airSystemSetAirSystemBasedOnControllerAction() {
+  leftToggleButtonForAirStyem.updateStatus();
+  rightToggleButtonForAirSystem.updateStatus();
+
+  if (leftToggleButtonForAirStyem.getState()) leftAirSystemHandler(true);
+  if (rightToggleButtonForAirSystem.getState()) rightAirSystemHandler(true);
+}

@@ -75,5 +75,6 @@ void opcontrol() {
         pros::E_CONTROLLER_DIGITAL_L1, pros::E_CONTROLLER_DIGITAL_R1,
         leftTriaballGraberMotor, rightTriaballGraberMotor, 127);
     updateStatusOfAllToogleButtons();
+    airSystemSetAirSystemBasedOnControllerAction();
   }
 }

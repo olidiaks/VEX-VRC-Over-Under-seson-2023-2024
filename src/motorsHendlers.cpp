@@ -8,3 +8,8 @@ void twoDigitalButtonsTwoMotorsHandler(
   motorA.move_voltage(power);
   motorB.move_voltage(power);
 }
+
+void setTwoMotorsVoltage(int voltage, const pros::Motor motorA, pros::Motor motorB){
+    motorA.move_voltage(voltage);
+    motorB.move_voltage(voltage);
+}

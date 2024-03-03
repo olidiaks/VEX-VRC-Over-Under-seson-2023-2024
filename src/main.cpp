@@ -1,5 +1,6 @@
 #include "main.h"
-#include "pros/misc.h"
+#include <cstdlib>
+#include <thread>
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.
@@ -41,7 +42,9 @@ void competition_initialize() {}
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
-void autonomous() {}
+void autonomous() {
+  readAutonomusStream();
+}
 
 /**
  * Runs the operator control code. This function will be started in its own task
@@ -58,6 +61,7 @@ void autonomous() {}
  */
 
 void opcontrol() {
+  atexit(writeAutonomusStream);
 
   while (true) {
     pros::lcd::print(0, "%d %d %d",
@@ -76,5 +80,6 @@ void opcontrol() {
         leftTriaballGraberMotor, rightTriaballGraberMotor, 127);
     updateStatusOfAllToogleButtons();
     airSystemSetAirSystemBasedOnControllerAction();
+    writeAutonomusStream();
   }
 }

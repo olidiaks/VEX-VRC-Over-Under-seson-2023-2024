@@ -21,19 +21,18 @@ extern bool isRightOpen;
 std::ofstream ofs("autonomus.h");
 void writeAutonomusStream(){
   ofs<<"#include \"main.h\"\n"
-    <<"static const int autonomusStream[] = {\t";
+    <<"static const int autonomusStream[] = {\n";
   while (true) {
     ofs<<leftFrontDiveTrainMotor.get_voltage()<<",\t"
     <<rightFrontDiveTrainMotor.get_voltage()<<",\t"
     <<launcherAMotor.get_voltage()<<",\t"
     <<rightTriaballGraberMotor.get_voltage()<<",\t"
     <<isLeftOpen<<",\t"
-    <<isRightOpen<<",\t";
+    <<isRightOpen<<",\n";
   }
-
 }
 
 void finishWritingAutonomusStream(){
-  ofs<<"};";
+  ofs<<"\n};";
   ofs.close();
 }

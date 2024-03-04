@@ -70,7 +70,8 @@ void opcontrol() {
                          0); // Prints status of the emulated screen LCDs
 
     // Arcade control scheme
-    setMotorsToDriveFromControler(100);
+    changeSpeedOfDriveTraind(&speedPrecent);
+    setMotorsToDriveFromControler(speedPrecent);
     twoDigitalButtonsTwoMotorsHandler(pros::E_CONTROLLER_DIGITAL_UP,
                                       pros::E_CONTROLLER_DIGITAL_DOWN,
                                       launcherAMotor, launcherBMotor, 127);

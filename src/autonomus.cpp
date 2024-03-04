@@ -18,7 +18,7 @@ void readAutonomusStream(){
 extern bool isLeftOpen;
 extern bool isRightOpen;
 
-std::ofstream ofs("autonomus.h");
+std::ofstream ofs("autonomusStream.h");
 void writeAutonomusStream(){
   ofs<<"#include \"main.h\"\n"
     <<"static const int autonomusStream[] = {\n";

@@ -1,6 +1,5 @@
 #include "main.h"
 #include <cstdlib>
-#include <thread>
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.
@@ -61,7 +60,7 @@ void autonomous() {
  */
 
 void opcontrol() {
-  atexit(writeAutonomusStream);
+  atexit(finishWritingAutonomusStream);
 
   while (true) {
     pros::lcd::print(0, "%d %d %d",

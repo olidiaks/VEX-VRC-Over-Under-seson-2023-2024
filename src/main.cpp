@@ -81,5 +81,6 @@ void opcontrol() {
     updateStatusOfAllToogleButtons();
     airSystemSetAirSystemBasedOnControllerAction();
     writeAutonomusStream();
+    printStatusOnController();
   }
 }

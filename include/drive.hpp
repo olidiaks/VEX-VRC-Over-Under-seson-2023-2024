@@ -1,6 +1,6 @@
 #include "main.h"
 
-int speedPrecent = 100;
+extern int speedPrecent;
 
 void setDriveTrain(const int leftMotors, const int rightMotors);
 

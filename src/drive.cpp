@@ -1,6 +1,8 @@
 #include "main.h"
 #include "pros/misc.h"
 
+int speedPrecent = 100;
+
 void setDriveTrain(const int leftMotors, const int rightMotors) {
   leftFrontDiveTrainMotor.move_voltage(leftMotors);
   leftBackDiveTrainMotor.move_voltage(leftMotors);

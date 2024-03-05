@@ -88,15 +88,14 @@ void opcontrol() {
   //  setMotorsToDriveFromControler(speedPrecent);
   twoDigitalButtonsTwoMotorsHandler(pros::E_CONTROLLER_DIGITAL_UP,
                                        pros::E_CONTROLLER_DIGITAL_DOWN,
-                                     launcherAMotor, launcherBMotor, 127);
+                                     launcherAMotor, launcherBMotor, 12000);
     twoDigitalButtonsTwoMotorsHandler(
       pros::E_CONTROLLER_DIGITAL_L1, pros::E_CONTROLLER_DIGITAL_R1,
-       leftTriaballGraberMotor, rightTriaballGraberMotor, 127);
+       leftTriaballGraberMotor, rightTriaballGraberMotor, 12000);
     //updateStatusOfAllToogleButtons();
     airSystemSetAirSystemBasedOnControllerAction();
   //   writeAutonomusStream();
   //   printStatusOnController();
-    pros::delay(100);
    }
     printf("optcotrol is working %x", errno);
 }

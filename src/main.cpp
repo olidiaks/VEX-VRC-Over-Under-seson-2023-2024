@@ -1,5 +1,13 @@
 #include "main.h"
-#include <cstdlib>
+#include "pros/llemu.hpp"
+#include <cstdio>
+
+int main(int argc, char *argv[]) {
+  while (1) {
+    printf("Main is working");
+  }
+  return 0;
+}
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.
@@ -43,6 +51,9 @@ void competition_initialize() {}
  */
 void autonomous() {
   readAutonomusStream();
+  while (1) {
+    printf("autonomus");
+  }
 }
 
 /**
@@ -63,11 +74,7 @@ void opcontrol() {
   atexit(finishWritingAutonomusStream);
 
   while (true) {
-    pros::lcd::print(0, "%d %d %d",
-                     (pros::lcd::read_buttons() & LCD_BTN_LEFT) >> 2,
-                     (pros::lcd::read_buttons() & LCD_BTN_CENTER) >> 1,
-                     (pros::lcd::read_buttons() & LCD_BTN_RIGHT) >>
-                         0); // Prints status of the emulated screen LCDs
+    printf("optcotrol is working");
 
     // Arcade control scheme
     changeSpeedOfDriveTraind(&speedPrecent);

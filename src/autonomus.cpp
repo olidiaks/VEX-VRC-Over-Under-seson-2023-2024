@@ -5,7 +5,7 @@ extern const int autonomusStream[];
 
 void Autonomus::readAutonomusStream() {
   const int *pAutonomusStream = autonomusStream;
-  for (int i = 0; sizeof(autonomusStream) > i; i += 5) {
+  for (int i = 0; sizeof(autonomusStream) > i; i += 6) {
     setDriveTrain(*(pAutonomusStream + i), *(pAutonomusStream + 1 + i));
     setTwoMotorsVoltage(*(pAutonomusStream + 2 + i), launcherAMotor,
                         launcherBMotor);

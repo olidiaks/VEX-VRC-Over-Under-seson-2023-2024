@@ -21,11 +21,14 @@ void airSystemHandler(const bool isToogle, const bool isOpen) {
 
 ToggleButton leftToggleButtonForAirStyem(pros::E_CONTROLLER_DIGITAL_L2);
 ToggleButton rightToggleButtonForAirSystem(pros::E_CONTROLLER_DIGITAL_R2);
+ToggleButton xToogleButtonForAirSystem(pros::E_CONTROLLER_DIGITAL_X);
 
 void airSystemSetAirSystemBasedOnControllerAction() {
   leftToggleButtonForAirStyem.updateStatus();
   rightToggleButtonForAirSystem.updateStatus();
+  xToogleButtonForAirSystem.updateStatus();
 
   if (leftToggleButtonForAirStyem.getState()) leftAirSystemHandler(true);
   if (rightToggleButtonForAirSystem.getState()) rightAirSystemHandler(true);
+  if (xToogleButtonForAirSystem.getState()) airSystemHandler(true);
 }

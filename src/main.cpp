@@ -85,7 +85,7 @@ void opcontrol() {
    while (true) {
   //   // Arcade control scheme
   //   changeSpeedOfDriveTraind(&speedPrecent);
-  //  setMotorsToDriveFromControler(speedPrecent);
+  setMotorsToDriveFromControler(100);
   twoDigitalButtonsTwoMotorsHandler(pros::E_CONTROLLER_DIGITAL_UP,
                                        pros::E_CONTROLLER_DIGITAL_DOWN,
                                      launcherAMotor, launcherBMotor, 12000);
@@ -96,6 +96,7 @@ void opcontrol() {
     airSystemSetAirSystemBasedOnControllerAction();
   //   writeAutonomusStream();
   //   printStatusOnController();
+    pros::delay(10);
    }
     printf("optcotrol is working %x", errno);
 }

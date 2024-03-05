@@ -5,8 +5,6 @@
 int speedPrecent = 100;
 
 void setDriveTrain(const int leftMotors, const int rightMotors) {
-  printf("set drivetrain is called\n");
-  printf("leftSpeed %d, rightSpeed %d\n", leftMotors, rightMotors);
   leftFrontDiveTrainMotor.move_voltage(leftMotors);
   leftBackDiveTrainMotor.move_voltage(leftMotors);
   rightFrontDiveTrainMotor.move_voltage(rightMotors);
@@ -14,10 +12,8 @@ void setDriveTrain(const int leftMotors, const int rightMotors) {
 }
 
 void setMotorsToDriveFromControler(const int speedPrecent) {
-  printf("set motors for drivetrian is called\n");
   int leftSpeed = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
   int rightSpeed = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
-  printf("leftSpeed %d, rightSpeed %d\n", leftSpeed, rightSpeed);
 
 
   if (-10 < leftSpeed && leftSpeed < 10)

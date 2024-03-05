@@ -1,7 +1,5 @@
 #include "main.h"
 
-std::string lastPrintedMassage = "";
-
 int printStatusOnControllerIterator = 0;
 
 void printStatusOnController() {

@@ -19,7 +19,3 @@ const void ToggleButton::updateStatus() {
       isPressed = false;
   }
 }
-
-void updateStatusOfAllToogleButtons() {
-  printf("update of All togles buttons is called\n");
-}

@@ -12,5 +12,3 @@ public:
   const bool getState();
   const void updateStatus();
 };
-
-void updateStatusOfAllToogleButtons();

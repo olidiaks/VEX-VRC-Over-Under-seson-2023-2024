@@ -1,8 +1,7 @@
 #include "main.h"
-#include <cstdio>
 #include <fstream>
 
-static const int autonomusStream[] = {};
+extern const int autonomusStream[];
 
 void Autonomus::readAutonomusStream() {
   const int *pAutonomusStream = autonomusStream;
@@ -21,6 +20,8 @@ void Autonomus::readAutonomusStream() {
 
 Autonomus::Autonomus() {
   std::ofstream ofs("/usd/autonomusStream.h", std::ios::trunc);
+  ofs<<"#include \"main.h\"\n";
+  ofs<<"static const int autonomusStream[] = {\n";
   ofs.close();
 }
 

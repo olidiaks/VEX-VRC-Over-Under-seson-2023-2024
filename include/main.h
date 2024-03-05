@@ -82,6 +82,7 @@ void opcontrol(void);
 #include "toggleButton.hpp"
 #include "autonomus.hpp"
 #include "printStatusOnController.hpp"
+#include "autonomusStream.hpp"
 #endif
 
 #endif // _PROS_MAIN_H_

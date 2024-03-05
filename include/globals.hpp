@@ -11,8 +11,8 @@ extern pros::Motor leftTriaballGraberMotor;
 extern pros::Motor rightTriaballGraberMotor;
 
 //analogs
-extern pros::ADIDigitalOut leftWing;
-extern pros::ADIDigitalOut rightWing;
+extern pros::adi::DigitalOut leftWing;
+extern pros::adi::DigitalOut rightWing;
 
 // Controller
 extern pros::Controller controller;

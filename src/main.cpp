@@ -1,10 +1,14 @@
 #include "main.h"
 #include "pros/llemu.hpp"
+#include "pros/rtos.hpp"
+#include <cerrno>
 #include <cstdio>
+#include <iostream>
 
 int main(int argc, char *argv[]) {
   while (1) {
     printf("Main is working");
+    std::cout << "hello\n";
   }
   return 0;
 }
@@ -16,8 +20,13 @@ int main(int argc, char *argv[]) {
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
+  printf("this was initalized");
+  std::cout << "hello\n";
   pros::lcd::initialize();
-  pros::lcd::set_text(1, "Hello PROS User!");
+  pros::lcd::set_text(1, "Hello PROS olidiaks!");
+
+  atexit(finishWritingAutonomusStream);
+   
 }
 
 /**
@@ -71,23 +80,23 @@ void autonomous() {
  */
 
 void opcontrol() {
-  atexit(finishWritingAutonomusStream);
 
-  while (true) {
-    printf("optcotrol is working");
-
-    // Arcade control scheme
-    changeSpeedOfDriveTraind(&speedPrecent);
-    setMotorsToDriveFromControler(speedPrecent);
-    twoDigitalButtonsTwoMotorsHandler(pros::E_CONTROLLER_DIGITAL_UP,
-                                      pros::E_CONTROLLER_DIGITAL_DOWN,
-                                      launcherAMotor, launcherBMotor, 127);
+    printf("optcotrol is working %x\n", errno);
+   while (true) {
+  //   // Arcade control scheme
+  //   changeSpeedOfDriveTraind(&speedPrecent);
+  //  setMotorsToDriveFromControler(speedPrecent);
+  twoDigitalButtonsTwoMotorsHandler(pros::E_CONTROLLER_DIGITAL_UP,
+                                       pros::E_CONTROLLER_DIGITAL_DOWN,
+                                     launcherAMotor, launcherBMotor, 127);
     twoDigitalButtonsTwoMotorsHandler(
-        pros::E_CONTROLLER_DIGITAL_L1, pros::E_CONTROLLER_DIGITAL_R1,
-        leftTriaballGraberMotor, rightTriaballGraberMotor, 127);
-    updateStatusOfAllToogleButtons();
+      pros::E_CONTROLLER_DIGITAL_L1, pros::E_CONTROLLER_DIGITAL_R1,
+       leftTriaballGraberMotor, rightTriaballGraberMotor, 127);
+    //updateStatusOfAllToogleButtons();
     airSystemSetAirSystemBasedOnControllerAction();
-    writeAutonomusStream();
-    printStatusOnController();
-  }
+  //   writeAutonomusStream();
+  //   printStatusOnController();
+    pros::delay(100);
+   }
+    printf("optcotrol is working %x", errno);
 }

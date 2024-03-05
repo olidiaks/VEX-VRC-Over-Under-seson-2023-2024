@@ -1,18 +1,19 @@
 #include "main.h"
-#include "pros/adi.h"
 #include "pros/misc.h"
 
 bool isLeftOpen = false;
 bool isRightOpen = false;
 
 void leftAirSystemHandler(const bool isToogle, const bool isOpen) {
+  printf("left wing update\n");
   isLeftOpen = isToogle ? !isLeftOpen : isOpen;
-  pros::c::adi_digital_write(2, isLeftOpen);
+  leftWing.set_value(isLeftOpen);
 }
 
 void rightAirSystemHandler(const bool isToogle, const bool isOpen) {
+  printf("right wing update\n");
   isRightOpen = isToogle ? !isRightOpen : isOpen;
-  pros::c::adi_digital_write(3, isRightOpen);
+  rightWing.set_value(isRightOpen);
 }
 
 void airSystemHandler(const bool isToogle, const bool isOpen) {
@@ -24,6 +25,7 @@ ToggleButton leftToggleButtonForAirStyem(pros::E_CONTROLLER_DIGITAL_L2);
 ToggleButton rightToggleButtonForAirSystem(pros::E_CONTROLLER_DIGITAL_R2);
 
 void airSystemSetAirSystemBasedOnControllerAction() {
+  printf("update of air system is called\n");
   leftToggleButtonForAirStyem.updateStatus();
   rightToggleButtonForAirSystem.updateStatus();
 

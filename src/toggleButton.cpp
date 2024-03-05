@@ -7,16 +7,19 @@ const bool ToggleButton::getState() { return isPressed; }
 
 const void ToggleButton::updateStatus() {
   if (controller.get_digital(button)) {
-    if (!wasPressedLastTimeWhenWasCheck) {
+    if (wasPressedLastTimeWhenWasCheck) {
+      isPressed = false;
+    }
+    else{
       isPressed = true;
       wasPressedLastTimeWhenWasCheck = true;
     }
-
-    if (wasPressedLastTimeWhenWasCheck) {
-      isPressed = true;
-    }
-  } else
+  } else{
     wasPressedLastTimeWhenWasCheck = false;
+      isPressed = false;
+  }
 }
 
-void updateStatusOfAllToogleButtons() {}
+void updateStatusOfAllToogleButtons() {
+  printf("update of All togles buttons is called\n");
+}

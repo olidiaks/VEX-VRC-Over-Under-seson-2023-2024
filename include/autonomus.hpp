@@ -1,6 +1,8 @@
 #include "main.h"
 
-void readAutonomusStream();
-void startWriteAutonomusStream();
-void writeAutonomusStream();
-void finishWritingAutonomusStream();
+class Autonomus {
+public:
+  Autonomus();
+  void readAutonomusStream();
+  void writeAutonomusStream();
+};

@@ -4,7 +4,7 @@
 
 static const int autonomusStream[] = {};
 
-void readAutonomusStream() {
+void Autonomus::readAutonomusStream() {
   const int *pAutonomusStream = autonomusStream;
   for (int i = 0; sizeof(autonomusStream) > i; i += 5) {
     setDriveTrain(*(pAutonomusStream + i), *(pAutonomusStream + 1 + i));
@@ -18,26 +18,22 @@ void readAutonomusStream() {
   }
 }
 
+
+Autonomus::Autonomus() {
+  std::ofstream ofs("/usd/autonomusStream.h", std::ios::trunc);
+  ofs.close();
+}
+
 extern bool isLeftOpen;
 extern bool isRightOpen;
 
-std::ofstream ofs("/usd/autonomusStream.h");
-void startWriteAutonomusStream() {
-  printf("Autonomus begin to be write\n");
-  ofs << "#include \"main.h\"\n"
-      << "static const int autonomusStream[] = {\n";
-}
-
-void writeAutonomusStream() {
+void Autonomus::writeAutonomusStream() {
+  std::ofstream ofs("/usd/autonomusStream.h", std::ios::app);
   ofs << leftFrontDiveTrainMotor.get_voltage() << ",\t"
       << rightFrontDiveTrainMotor.get_voltage() << ",\t"
       << launcherAMotor.get_voltage() << ",\t"
       << rightTriaballGraberMotor.get_voltage() << ",\t" << isLeftOpen << ",\t"
       << isRightOpen << ",\n";
-}
-
-void finishWritingAutonomusStream() {
-  printf("Autonomus finish being written\n");
-  ofs << "\n};";
   ofs.close();
 }
+

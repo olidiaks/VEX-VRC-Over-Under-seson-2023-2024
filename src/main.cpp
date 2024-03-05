@@ -1,8 +1,8 @@
 #include "main.h"
 #include "pros/llemu.hpp"
-#include "pros/rtos.hpp"
-#include <cerrno>
-#include <cstdio>
+
+
+Autonomus selfDriving;
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.
@@ -13,9 +13,6 @@
 void initialize() {
   pros::lcd::initialize();
   pros::lcd::set_text(1, "Porter HS is caming for you.");
-
-  startWriteAutonomusStream();
-  atexit(finishWritingAutonomusStream);
 }
 
 /**
@@ -48,10 +45,7 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
-  readAutonomusStream();
-  while (1) {
-    printf("autonomus");
-  }
+  selfDriving.readAutonomusStream();
 }
 
 /**
@@ -68,9 +62,9 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 
+
 void opcontrol() {
 
-  printf("optcotrol is working %x\n", errno);
   while (true) {
     //   // Arcade control scheme
     //   changeSpeedOfDriveTraind(&speedPrecent);
@@ -81,9 +75,8 @@ void opcontrol() {
     twoDigitalButtonsTwoMotorsHandler(
         pros::E_CONTROLLER_DIGITAL_L1, pros::E_CONTROLLER_DIGITAL_R1,
         leftTriaballGraberMotor, rightTriaballGraberMotor, 12000);
-    // updateStatusOfAllToogleButtons();
     airSystemSetAirSystemBasedOnControllerAction();
-    writeAutonomusStream();
+    selfDriving.writeAutonomusStream();
     //   printStatusOnController();
   }
 }

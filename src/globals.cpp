@@ -9,5 +9,5 @@ pros::Motor launcherBMotor(16);
 pros::Motor leftTriaballGraberMotor(10);
 pros::Motor rightTriaballGraberMotor(1);
 
-// Controler
+// Controller
 pros::Controller controller(pros::E_CONTROLLER_MASTER);

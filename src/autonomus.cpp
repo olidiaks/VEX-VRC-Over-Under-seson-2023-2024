@@ -19,7 +19,7 @@ void Autonomus::readAutonomusStream() {
 
 
 Autonomus::Autonomus() {
-  std::ofstream ofs("/usd/autonomusStream.h", std::ios::trunc);
+  std::ofstream ofs("/usd/autonomusStream.hpp", std::ios::trunc);
   ofs<<"#include \"main.h\"\n";
   ofs<<"static const int autonomusStream[] = {\n";
   ofs.close();
@@ -29,7 +29,7 @@ extern bool isLeftOpen;
 extern bool isRightOpen;
 
 void Autonomus::writeAutonomusStream() {
-  std::ofstream ofs("/usd/autonomusStream.h", std::ios::app);
+  std::ofstream ofs("/usd/autonomusStream.hpp", std::ios::app);
   ofs << leftFrontDiveTrainMotor.get_voltage() << ",\t"
       << rightFrontDiveTrainMotor.get_voltage() << ",\t"
       << launcherAMotor.get_voltage() << ",\t"

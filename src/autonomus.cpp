@@ -1,5 +1,4 @@
 #include "main.h"
-#include "pros/rtos.hpp"
 #include <fstream>
 
 extern const int autonomusStream[];
@@ -18,25 +17,26 @@ void Autonomus::readAutonomusStream() {
   }
 }
 
-
 Autonomus::Autonomus() {
   std::ofstream ofs("/usd/autonomusStream.hpp", std::ios::trunc);
-  ofs<<"#include \"main.h\"\n";
-  ofs<<"static const int autonomusStream[] = {\n";
+  ofs << "#include \"main.h\"\n";
+  ofs << "static const int autonomusStream[] = {\n";
   ofs.close();
+  counter = 0;
 }
 
 extern bool isLeftOpen;
 extern bool isRightOpen;
 
 void Autonomus::writeAutonomusStream() {
-  std::ofstream ofs("/usd/autonomusStream.hpp", std::ios::app);
-  ofs << leftFrontDiveTrainMotor.get_voltage() << ",\t"
-      << rightFrontDiveTrainMotor.get_voltage() << ",\t"
-      << launcherAMotor.get_voltage() << ",\t"
-      << rightTriaballGraberMotor.get_voltage() << ",\t" << isLeftOpen << ",\t"
-      << isRightOpen << ",\n";
-  ofs.close();
-  pros::delay(1);
+  counter++;
+  if (counter > 3) {
+    std::ofstream ofs("/usd/autonomusStream.hpp", std::ios::app);
+    ofs << leftFrontDiveTrainMotor.get_voltage() << ",\t"
+        << rightFrontDiveTrainMotor.get_voltage() << ",\t"
+        << launcherAMotor.get_voltage() << ",\t"
+        << rightTriaballGraberMotor.get_voltage() << ",\t" << isLeftOpen
+        << ",\t" << isRightOpen << ",\n";
+    ofs.close();
+  }
 }
-

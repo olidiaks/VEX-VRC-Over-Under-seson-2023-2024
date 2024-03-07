@@ -77,6 +77,6 @@ void opcontrol() {
         leftTriaballGraberMotor, rightTriaballGraberMotor, 12000);
     airSystemSetAirSystemBasedOnControllerAction();
     selfDriving.writeAutonomusStream();
-    //   printStatusOnController();
+    printStatusOnController();
   }
 }

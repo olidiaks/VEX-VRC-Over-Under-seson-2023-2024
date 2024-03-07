@@ -1,4 +1,5 @@
 #include "main.h"
+#include "pros/rtos.hpp"
 #include <fstream>
 
 extern const int autonomusStream[];
@@ -36,5 +37,6 @@ void Autonomus::writeAutonomusStream() {
       << rightTriaballGraberMotor.get_voltage() << ",\t" << isLeftOpen << ",\t"
       << isRightOpen << ",\n";
   ofs.close();
+  pros::delay(1);
 }
 

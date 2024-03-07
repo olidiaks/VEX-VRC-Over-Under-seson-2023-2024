@@ -1,9 +1,11 @@
 #include "main.h"
+#include <cstdio>
 
 int printStatusOnControllerIterator = 0;
 
 void printStatusOnController() {
-  printStatusOnControllerIterator += 1;
+  printf("%d\n", printStatusOnControllerIterator);
+  printStatusOnControllerIterator ++;
   if (printStatusOnControllerIterator > 10000) {
     printStatusOnControllerIterator = 0;
     controller.print(3, 0, "%d | %d %d %d %d | %d %d", speedPrecent,

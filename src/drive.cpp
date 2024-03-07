@@ -1,6 +1,5 @@
 #include "main.h"
 #include "pros/misc.h"
-#include <cstdio>
 
 int speedPrecent = 100;
 

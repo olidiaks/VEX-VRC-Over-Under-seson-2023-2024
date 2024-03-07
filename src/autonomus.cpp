@@ -30,7 +30,7 @@ extern bool isRightOpen;
 
 void Autonomus::writeAutonomusStream() {
   counter++;
-  if (counter > 6) {
+  if (counter > 20) {
     std::ofstream ofs("/usd/autonomusStream.hpp", std::ios::app);
     ofs << leftFrontDiveTrainMotor.get_voltage() << ",\t"
         << rightFrontDiveTrainMotor.get_voltage() << ",\t"

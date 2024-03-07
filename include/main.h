@@ -81,7 +81,6 @@ void opcontrol(void);
 #include "motorsHendlers.hpp"
 #include "toggleButton.hpp"
 #include "autonomus.hpp"
-#include "printStatusOnController.hpp"
 #include "autonomusStream.hpp"
 #endif
 

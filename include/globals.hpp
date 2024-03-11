@@ -16,3 +16,6 @@ extern pros::adi::DigitalOut rightWing;
 
 // Controller
 extern pros::Controller controller;
+
+//sensors
+extern pros::IMU inertial;

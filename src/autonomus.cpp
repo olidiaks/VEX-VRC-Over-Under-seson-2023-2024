@@ -1,18 +1,25 @@
 #include "main.h"
+#include <cstdlib>
 #include <fstream>
 
 extern const int autonomusStream[];
 
 void Autonomus::readAutonomusStream() {
   const int *pAutonomusStream = autonomusStream;
-  for (int i = 0; sizeof(autonomusStream) > i; i += 6) {
-    setDriveTrain(*(pAutonomusStream + i), *(pAutonomusStream + 1 + i));
-    setTwoMotorsVoltage(*(pAutonomusStream + 2 + i), launcherAMotor,
+  for (int i = 0; sizeof(autonomusStream) > i; i += 7) {
+    while (std::abs(inertial.get_heading() - *(pAutonomusStream + i)) > 5) {
+      const float errorInHeading =
+           inertial.get_heading() - *(pAutonomusStream + i);
+      const float speedFormotors = (errorInHeading > 180 ? errorInHeading / 2 : errorInHeading) * 200;
+      setDriveTrain(-errorInHeading, errorInHeading);
+    }
+    setDriveTrain(*(pAutonomusStream + i + 1), *(pAutonomusStream + 2 + i));
+    setTwoMotorsVoltage(*(pAutonomusStream + 3 + i), launcherAMotor,
                         launcherBMotor);
-    setTwoMotorsVoltage(*(pAutonomusStream + 3 + i), leftTriaballGraberMotor,
+    setTwoMotorsVoltage(*(pAutonomusStream + 4 + i), leftTriaballGraberMotor,
                         rightTriaballGraberMotor);
-    leftAirSystemHandler(false, *(pAutonomusStream + 4 + i));
-    rightAirSystemHandler(false, *(pAutonomusStream + 5 + i));
+    leftAirSystemHandler(false, *(pAutonomusStream + 5 + i));
+    rightAirSystemHandler(false, *(pAutonomusStream + 6 + i));
     pros::delay(10);
   }
 }
@@ -32,7 +39,8 @@ void Autonomus::writeAutonomusStream() {
   counter++;
   if (counter > 100) {
     std::ofstream ofs("/usd/autonomusStream.hpp", std::ios::app);
-    ofs << leftFrontDiveTrainMotor.get_voltage() << ",\t"
+    ofs << inertial.get_heading() << ", \t"
+        << leftFrontDiveTrainMotor.get_voltage() << ",\t"
         << rightFrontDiveTrainMotor.get_voltage() << ",\t"
         << launcherAMotor.get_voltage() << ",\t"
         << rightTriaballGraberMotor.get_voltage() << ",\t" << isLeftOpen

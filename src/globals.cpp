@@ -1,4 +1,5 @@
 #include "main.h"
+
 // Decorate motors.
 pros::Motor leftFrontDiveTrainMotor(-8);
 pros::Motor rightFrontDiveTrainMotor(5);
@@ -15,3 +16,7 @@ pros::adi::DigitalOut rightWing(3);
 
 // Controller
 pros::Controller controller(pros::E_CONTROLLER_MASTER);
+
+//sensors
+pros::IMU inertial(2);
+

@@ -6,7 +6,7 @@ extern const int autonomusStream[];
 
 void Autonomus::readAutonomusStream() {
   while (inertial.is_calibrating()) {
-    printf("inertail sensor is calibrating");
+    printf("inertail sensor is calibrating\n");
   }
   const int *pAutonomusStream = autonomusStream;
   for (int i = 0; sizeof(autonomusStream) > i; i += 7) {
@@ -15,6 +15,7 @@ void Autonomus::readAutonomusStream() {
            inertial.get_heading() - *(pAutonomusStream + i);
       const float speedFormotors = (errorInHeading > 180 ? errorInHeading / 2 : errorInHeading) * 200;
       setDriveTrain(-errorInHeading, errorInHeading);
+      printf("Error in heading: %f\nspeed: %f", errorInHeading, speedFormotors);
     }
     setDriveTrain(*(pAutonomusStream + i + 1), *(pAutonomusStream + 2 + i));
     setTwoMotorsVoltage(*(pAutonomusStream + 3 + i), launcherAMotor,

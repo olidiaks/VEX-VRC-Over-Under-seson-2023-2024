@@ -1,9 +1,6 @@
 #include "main.h"
 #include <cstdio>
 
-
-Autonomus selfDriving;
-
 /**
  * Runs initialization code. This occurs as soon as the program is started.
  *
@@ -11,7 +8,6 @@ Autonomus selfDriving;
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
-  inertial.reset();
   pros::lcd::initialize();
   pros::lcd::set_text(1, "Porter HS is caming for you.");
 }
@@ -46,6 +42,7 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
+  Autonomus selfDriving;
   selfDriving.readAutonomusStream();
 }
 
@@ -63,11 +60,11 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 
-
 void opcontrol() {
   while (inertial.is_calibrating()) {
     printf("inertail sensor is calibrating");
   }
+  Autonomus selfDriving;
   controller.rumble("..");
 
   while (true) {

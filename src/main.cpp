@@ -1,5 +1,5 @@
 #include "main.h"
-#include "pros/llemu.hpp"
+#include <cstdio>
 
 
 Autonomus selfDriving;
@@ -11,6 +11,7 @@ Autonomus selfDriving;
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
+  inertial.reset();
   pros::lcd::initialize();
   pros::lcd::set_text(1, "Porter HS is caming for you.");
 }
@@ -64,6 +65,9 @@ void autonomous() {
 
 
 void opcontrol() {
+  while (inertial.is_calibrating()) {
+    printf("inertail sensor is calibrating");
+  }
 
   while (true) {
     //   // Arcade control scheme

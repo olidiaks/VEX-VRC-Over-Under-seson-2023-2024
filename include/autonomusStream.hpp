@@ -1,4 +1,2 @@
-#include "main.h"
-
-static const int autonomusStream[] = {
+1, 	0,	0,	0,	-6,	1,	1,
 };

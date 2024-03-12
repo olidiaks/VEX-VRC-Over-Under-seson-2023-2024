@@ -8,6 +8,7 @@ void Autonomus::readAutonomusStream() {
   while (inertial.is_calibrating()) {
     printf("inertail sensor is calibrating");
   }
+  controller.rumble("..");
   const int *pAutonomusStream = autonomusStream;
   for (int i = 0; sizeof(autonomusStream) > i; i += 7) {
     while (std::abs(inertial.get_heading() - *(pAutonomusStream + i)) > 5) {

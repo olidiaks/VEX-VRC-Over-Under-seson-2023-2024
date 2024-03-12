@@ -68,6 +68,7 @@ void opcontrol() {
   while (inertial.is_calibrating()) {
     printf("inertail sensor is calibrating");
   }
+  controller.rumble("..");
 
   while (true) {
     //   // Arcade control scheme

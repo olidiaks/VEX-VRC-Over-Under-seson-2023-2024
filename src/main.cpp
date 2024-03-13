@@ -9,7 +9,7 @@
  */
 void initialize() {
   pros::lcd::initialize();
-  pros::lcd::set_text(1, "Porter HS is caming for you.");
+  pros::lcd::set_text(1, "Porter HS is coming for you.");
 }
 
 /**

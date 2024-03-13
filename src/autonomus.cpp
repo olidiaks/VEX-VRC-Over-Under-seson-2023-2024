@@ -1,4 +1,5 @@
 #include "main.h"
+#include <cstdio>
 #include <cstdlib>
 #include <fstream>
 
@@ -7,7 +8,7 @@ extern const int autonomusStream[];
 void Autonomus::readAutonomusStream() {
   inertial.reset();
   while (inertial.is_calibrating()) {
-    printf("inertail sensor is calibrating");
+    asm("nop");
   }
   controller.rumble("..");
   const int *pAutonomusStream = autonomusStream;
@@ -16,8 +17,9 @@ void Autonomus::readAutonomusStream() {
       const float errorInHeading =
           inertial.get_heading() - *(pAutonomusStream + i);
       const float speedFormotors =
-          (errorInHeading > 180 ? errorInHeading / 2 : errorInHeading) * 200;
-      setDriveTrain(-errorInHeading, errorInHeading);
+          (errorInHeading > 180 ? errorInHeading / 2 : errorInHeading);
+      setDriveTrain(-speedFormotors, speedFormotors);
+      printf("error in heding: %f\nspeedForMotors: %f\n", errorInHeading, speedFormotors);
     }
     setDriveTrain(*(pAutonomusStream + i + 1), *(pAutonomusStream + 2 + i));
     setTwoMotorsVoltage(*(pAutonomusStream + 3 + i), launcherAMotor,
@@ -42,7 +44,7 @@ extern bool isRightOpen;
 
 void Autonomus::writeAutonomusStream() {
   std::ofstream ofs("/usd/autonomusStream.hpp", std::ios::app);
-  ofs << (int)inertial.get_heading() << ", \t"
+  ofs << int (inertial.get_heading()) << ", \t"
       << leftFrontDiveTrainMotor.get_voltage() << ",\t"
       << rightFrontDiveTrainMotor.get_voltage() << ",\t"
       << launcherAMotor.get_voltage() << ",\t"

@@ -13,7 +13,7 @@ void Autonomus::readAutonomusStream() {
   controller.rumble("..");
   const int *pAutonomusStream = autonomusStream;
   for (int i = 0; sizeof(autonomusStream) > i; i += 7) {
-    while (inertial.get_heading() - *(pAutonomusStream + i) > 9 ||inertial.get_heading() - *(pAutonomusStream + i) < -9) {
+    while (inertial.get_heading() - *(pAutonomusStream + i) > 18 ||inertial.get_heading() - *(pAutonomusStream + i) < -18) {
       const float errorInHeading =
           inertial.get_heading() - *(pAutonomusStream + i);
       const float speedFormotors =

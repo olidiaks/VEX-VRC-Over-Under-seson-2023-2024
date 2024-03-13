@@ -17,7 +17,7 @@ void Autonomus::readAutonomusStream() {
       const float errorInHeading =
           inertial.get_heading() - *(pAutonomusStream + i);
       const float speedFormotors =
-          (errorInHeading > 180 ? errorInHeading / 2 : errorInHeading) * 120;
+          (errorInHeading > 180 ? -errorInHeading / 2 : errorInHeading) * 320;
       setDriveTrain(-speedFormotors, speedFormotors);
       printf("error in heding: %f\nspeedForMotors: %f\n", errorInHeading, speedFormotors);
     }

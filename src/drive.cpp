@@ -54,8 +54,8 @@ void moveRobot(const int distance, const int voltage) {
   inertial.tare();
 
   while (fabs(avgDistanceFromDriveTrainEncoders()) < abs(distance)) {
-    setDriveTrain(voltage * direction - inertial.get_rotation(),
-                  voltage * direction + inertial.get_rotation());
+    setDriveTrain(voltage * direction - inertial.get_rotation() * 200,
+                  voltage * direction + inertial.get_rotation() * 200);
     pros::delay(10);
   }
 

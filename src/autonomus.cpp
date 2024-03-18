@@ -1,6 +1,5 @@
 #include "main.h"
 #include <cstdio>
-#include <cstdlib>
 #include <fstream>
 
 extern const int autonomusStream[];
@@ -15,7 +14,7 @@ void Autonomus::readAutonomusStream() {
   for (int i = 0; sizeof(autonomusStream) > i; i += 7) {
     while (inertial.get_heading() - *(pAutonomusStream + i) > 18 ||inertial.get_heading() - *(pAutonomusStream + i) < -18) {
       const float errorInHeading =
-          inertial.get_heading() - *(pAutonomusStream + i);
+          fabs(inertial.get_heading() - *(pAutonomusStream + i));
       const float speedFormotors =
           (errorInHeading > 180 ? -errorInHeading / 2 : errorInHeading) * 320;
       setDriveTrain(-speedFormotors, speedFormotors);

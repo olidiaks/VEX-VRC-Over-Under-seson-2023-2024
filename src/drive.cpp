@@ -49,10 +49,13 @@ double avgDistanceFromDriveTrainEncoders() {
 
 void moveRobot(const int distance, const int voltage) {
   const int direction = abs(distance) / distance;
-  resetDriveTrainEncoders();
 
-  while (fabs(avgDistanceFromDriveTrainEncoders()) < abs(distance)){
-    setDriveTrain(voltage * direction, voltage * direction);
+  resetDriveTrainEncoders();
+  inertial.tare();
+
+  while (fabs(avgDistanceFromDriveTrainEncoders()) < abs(distance)) {
+    setDriveTrain(voltage * direction - inertial.get_rotation(),
+                  voltage * direction + inertial.get_rotation());
     pros::delay(10);
   }
 

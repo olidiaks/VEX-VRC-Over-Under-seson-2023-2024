@@ -30,3 +30,10 @@ void changeSpeedOfDriveTraind(int *pSpeedPrecent) {
       5 * (controller.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT) -
            controller.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT));
 }
+
+void resetDriveTrainEncoders(){
+  leftFrontDiveTrainMotor.tare_position();
+  leftBackDiveTrainMotor.tare_position();
+  rightFrontDiveTrainMotor.tare_position();
+  rightBackDiveTrainMotor.tare_position();
+}

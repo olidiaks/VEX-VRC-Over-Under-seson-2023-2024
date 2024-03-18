@@ -9,3 +9,7 @@ void setMotorsToDriveFromControler(const int speedPrecent);
 void changeSpeedOfDriveTraind(int *pSpeedPrecent);
 
 void resetDriveTrainEncoders();
+
+double avgDistanceFromDriveTrainEncoders();
+
+void moveRobot(const int distance, const int voltage = 12000);

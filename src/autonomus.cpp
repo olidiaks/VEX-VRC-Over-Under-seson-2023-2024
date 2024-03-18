@@ -12,11 +12,11 @@ void Autonomus::readAutonomusStream() {
   controller.rumble("..");
   const int *pAutonomusStream = autonomusStream;
   for (int i = 0; sizeof(autonomusStream) > i; i += 7) {
-    while (inertial.get_heading() - *(pAutonomusStream + i) > 18 ||inertial.get_heading() - *(pAutonomusStream + i) < -18) {
+    while (fabs(inertial.get_rotation() - *(pAutonomusStream + i)) > 5 ) {
       const float errorInHeading =
-          fabs(inertial.get_heading() - *(pAutonomusStream + i));
+          fabs(inertial.get_rotation() - *(pAutonomusStream + i));
       const float speedFormotors =
-          (errorInHeading > 180 ? -errorInHeading / 2 : errorInHeading) * 320;
+          errorInHeading * 320;
       setDriveTrain(-speedFormotors, speedFormotors);
       printf("error in heding: %f\nspeedForMotors: %f\n", errorInHeading, speedFormotors);
     }
@@ -43,7 +43,7 @@ extern bool isRightOpen;
 
 void Autonomus::writeAutonomusStream() {
   std::ofstream ofs("/usd/autonomusStream.hpp", std::ios::app);
-  ofs << int (inertial.get_heading()) << ", \t"
+  ofs << int (inertial.get_rotation()) << ", \t"
       << leftFrontDiveTrainMotor.get_voltage() << ",\t"
       << rightFrontDiveTrainMotor.get_voltage() << ",\t"
       << launcherAMotor.get_voltage() << ",\t"

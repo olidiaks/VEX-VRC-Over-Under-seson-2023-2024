@@ -81,7 +81,6 @@ void opcontrol(void);
 #include "motorsHendlers.hpp"
 #include "toggleButton.hpp"
 #include "autonomus.hpp"
-#include "autonomusStream.hpp"
 #endif
 
 #endif // _PROS_MAIN_H_

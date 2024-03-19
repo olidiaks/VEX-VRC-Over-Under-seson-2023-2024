@@ -14,7 +14,7 @@ void Autonomus::readAutonomusStream() {
   for (int i = 0; sizeof(autonomusStream) > i; i += 7) {
     while (fabs(inertial.get_rotation() - *(pAutonomusStream + i)) > 5 ) {
       const float errorInHeading =
-          fabs(inertial.get_rotation() - *(pAutonomusStream + i));
+          inertial.get_rotation() - *(pAutonomusStream + i);
       const float speedFormotors =
           errorInHeading * 320;
       setDriveTrain(-speedFormotors, speedFormotors);

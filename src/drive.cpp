@@ -1,7 +1,9 @@
 #include "main.h"
 #include "pros/misc.h"
 #include "pros/rtos.hpp"
+#include <cmath>
 #include <cstdlib>
+#include <set>
 
 int speedPrecent = 100;
 
@@ -63,4 +65,28 @@ void moveRobot(const int distance, const int voltage) {
   pros::delay(50);
 
   setDriveTrain(0, 0);
+}
+
+void turnRobot(const int degress, const int voltage){
+  int direction = abs(degress) / degress;
+  inertial.tare();
+  setDriveTrain(voltage * direction, -voltage * direction);
+  while (fabs(inertial.get_rotation()) < abs(degress) - 50) {
+    pros::delay(10);
+  }
+
+  setDriveTrain(0,0);
+
+  pros::delay(100);
+
+  direction = fabs(inertial.get_rotation()) - abs(degress) > 0 ? -direction : direction;
+
+  while (fabs(fabs(inertial.get_rotation()) - abs(degress)) > 5) {
+    setDriveTrain(0.5 * voltage * direction, -0.5 * voltage * direction);
+  }
+
+  setDriveTrain(0,0);
+
+
+
 }

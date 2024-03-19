@@ -42,8 +42,6 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
-  Autonomus selfDriving;
-  selfDriving.readAutonomusStream();
 }
 
 /**
@@ -64,7 +62,6 @@ void opcontrol() {
   while (inertial.is_calibrating()) {
     printf("inertail sensor is calibrating");
   }
-  Autonomus selfDriving;
   controller.rumble("..");
 
   while (true) {
@@ -78,6 +75,5 @@ void opcontrol() {
         pros::E_CONTROLLER_DIGITAL_L1, pros::E_CONTROLLER_DIGITAL_R1,
         leftTriaballGraberMotor, rightTriaballGraberMotor, 12000);
     airSystemSetAirSystemBasedOnControllerAction();
-    selfDriving.writeAutonomusStream();
   }
 }

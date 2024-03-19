@@ -12,11 +12,11 @@ void Autonomus::readAutonomusStream() {
   controller.rumble("..");
   const int *pAutonomusStream = autonomusStream;
   for (int i = 0; sizeof(autonomusStream) > i; i += 7) {
-    while (fabs(inertial.get_rotation() - *(pAutonomusStream + i)) > 5 ) {
+    while (fabs(inertial.get_rotation() - *(pAutonomusStream + i)) > 9 ) {
       const float errorInHeading =
           inertial.get_rotation() - *(pAutonomusStream + i);
       const float speedFormotors =
-          errorInHeading * 320;
+          errorInHeading * 400;
       setDriveTrain(-speedFormotors, speedFormotors);
       printf("error in heding: %f\nspeedForMotors: %f\n", errorInHeading, speedFormotors);
     }

@@ -51,6 +51,7 @@ Autonomus::Autonomus() {
   ofs << "#include \"main.h\"\n";
   ofs << "static const double autonomusStream[] = {\n";
   ofs.close();
+  tareMotors();
 }
 
 extern bool isLeftOpen;

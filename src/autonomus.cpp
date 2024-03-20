@@ -43,7 +43,7 @@ extern bool isRightOpen;
 
 void Autonomus::writeAutonomusStream() {
   std::ofstream ofs("/usd/autonomusStream.hpp", std::ios::app);
-  ofs << int (inertial.get_heading()) << ", \t"
+  ofs << int (inertial.get_rotation()) << ", \t"
       << leftFrontDiveTrainMotor.get_voltage() << ",\t"
       << rightFrontDiveTrainMotor.get_voltage() << ",\t"
       << launcherAMotor.get_voltage() << ",\t"

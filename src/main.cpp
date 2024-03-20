@@ -69,7 +69,7 @@ void opcontrol() {
 
   while (true) {
     //   // Arcade control scheme
-    //   changeSpeedOfDriveTraind(&speedPrecent);
+    changeSpeedOfDriveTraind(&speedPrecent);
     setMotorsToDriveFromControler(100);
     twoDigitalButtonsTwoMotorsHandler(pros::E_CONTROLLER_DIGITAL_UP,
                                       pros::E_CONTROLLER_DIGITAL_DOWN,

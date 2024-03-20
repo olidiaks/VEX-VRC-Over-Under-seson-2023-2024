@@ -5,12 +5,12 @@
 #include <fstream>
 
 extern const double autonomusStream[];
-const double *pAutonomusStream = autonomusStream;
 
 void Autonomus::readAutonomusStream() {
-  inertial.reset();
+const double *pAutonomusStream = autonomusStream;
+  /* inertial.reset();
   while (inertial.is_calibrating())
-    asm("nop");
+    asm("nop"); */
 
   controller.rumble("..");
   for (int i = 0; sizeof(autonomusStream) > i; i += 9) {
@@ -38,20 +38,12 @@ void Autonomus::readAutonomusStream() {
       pros::delay(10);
     } while (fabs(*(pAutonomusStream + i + 7) -
                   leftFrontDiveTrainMotor.get_position() -
-                  leftBackDiveTrainMotor.get_position()) > 3 &&
+                  leftBackDiveTrainMotor.get_position()) > 10 &&
              fabs(*(pAutonomusStream + i + 8) -
                   rightFrontDiveTrainMotor.get_position() -
-                  rightBackDiveTrainMotor.get_position()) > 3);
+                  rightBackDiveTrainMotor.get_position()) > 10);
   }
-}
-
-bool Autonomus::moveMotor(const pros::Motor motorFront,
-                          const pros::Motor motorBack, const int i,
-                          const int motorId) {
-
-  return fabs(*(pAutonomusStream + i + 7) -
-              leftFrontDiveTrainMotor.get_position() -
-              leftBackDiveTrainMotor.get_position()) > 3;
+  setDriveTrain(0, 0);
 }
 
 Autonomus::Autonomus() {

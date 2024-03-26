@@ -7,39 +7,32 @@
 extern const double autonomusStream[];
 
 void Autonomus::readAutonomusStream() {
-const double *pAutonomusStream = autonomusStream;
+  const double *pAutonomusStream = autonomusStream;
   /* inertial.reset();
   while (inertial.is_calibrating())
     asm("nop"); */
 
   controller.rumble("..");
-  for (int i = 0; sizeof(autonomusStream) > i; i += 9) {
-    /* while (fabs(inertial.get_rotation() - *(pAutonomusStream + i)) > 9) {
-      const float errorInHeading =
-          inertial.get_rotation() - *(pAutonomusStream + i);
-      const float speedFormotors = errorInHeading * 400;
-      setDriveTrain(-speedFormotors, speedFormotors);
-    } */
-    // setDriveTrain(*(pAutonomusStream + i + 1), *(pAutonomusStream + 2 + i));
-    setTwoMotorsVoltage(*(pAutonomusStream + 3 + i), launcherAMotor,
+  for (int i = 0; sizeof(autonomusStream) > i; i += 8) {
+    setTwoMotorsVoltage(*(pAutonomusStream + 0 + i), launcherAMotor,
                         launcherBMotor);
-    setTwoMotorsVoltage(*(pAutonomusStream + 4 + i), leftTriaballGraberMotor,
+    setTwoMotorsVoltage(*(pAutonomusStream + 1 + i), leftTriaballGraberMotor,
                         rightTriaballGraberMotor);
-    leftAirSystemHandler(false, *(pAutonomusStream + 5 + i));
-    rightAirSystemHandler(false, *(pAutonomusStream + 6 + i));
+    leftAirSystemHandler(false, *(pAutonomusStream + 2 + i));
+    rightAirSystemHandler(false, *(pAutonomusStream + 3 + i));
 
     do {
-      setDriveTrain(500 * (*(pAutonomusStream + i + 7) -
+      setDriveTrain(500 * (*(pAutonomusStream + i + 4) -
                            leftFrontDiveTrainMotor.get_position() -
                            leftBackDiveTrainMotor.get_position()),
-                    500 * (*(pAutonomusStream + i + 8) -
+                    500 * (*(pAutonomusStream + i + 5) -
                            rightFrontDiveTrainMotor.get_position() -
                            rightBackDiveTrainMotor.get_position()));
       pros::delay(10);
-    } while (fabs(*(pAutonomusStream + i + 7) -
+    } while (fabs(*(pAutonomusStream + i + 6) -
                   leftFrontDiveTrainMotor.get_position() -
                   leftBackDiveTrainMotor.get_position()) > 10 &&
-             fabs(*(pAutonomusStream + i + 8) -
+             fabs(*(pAutonomusStream + i + 7) -
                   rightFrontDiveTrainMotor.get_position() -
                   rightBackDiveTrainMotor.get_position()) > 10);
   }
@@ -59,10 +52,7 @@ extern bool isRightOpen;
 
 void Autonomus::writeAutonomusStream() {
   std::ofstream ofs("/usd/autonomusStream.hpp", std::ios::app);
-  ofs << int(inertial.get_rotation()) << ", \t"
-      << leftFrontDiveTrainMotor.get_voltage() << ",\t"
-      << rightFrontDiveTrainMotor.get_voltage() << ",\t"
-      << launcherAMotor.get_voltage() << ",\t"
+  ofs << launcherAMotor.get_voltage() << ",\t"
       << rightTriaballGraberMotor.get_voltage() << ",\t" << isLeftOpen << ",\t"
       << isRightOpen << ",\t"
       << leftFrontDiveTrainMotor.get_position() +

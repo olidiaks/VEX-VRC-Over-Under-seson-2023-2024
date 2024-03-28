@@ -1,4 +1,6 @@
 #include "main.h"
+#include "pros/misc.h"
+#include "pros/misc.hpp"
 #include <cstdio>
 
 /**
@@ -65,6 +67,7 @@ void opcontrol() {
     printf("inertail sensor is calibrating");
   }
   Autonomus selfDriving;
+  ToggleButton luancherDownToggleButton(pros::E_CONTROLLER_DIGITAL_B);
   controller.rumble("..");
 
   while (true) {

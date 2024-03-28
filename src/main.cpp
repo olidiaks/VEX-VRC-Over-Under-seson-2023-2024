@@ -1,4 +1,5 @@
 #include "main.h"
+#include "pros/misc.h"
 #include <cstdio>
 
 /**
@@ -64,6 +65,7 @@ void opcontrol() {
   while (inertial.is_calibrating()) {
     printf("inertail sensor is calibrating");
   }
+  OneToggleButtonsTwoMotorsHandler launcherDownToggleButton(pros::E_CONTROLLER_DIGITAL_B, &launcherAMotor, &launcherBMotor);
   Autonomus selfDriving;
   controller.rumble("..");
 

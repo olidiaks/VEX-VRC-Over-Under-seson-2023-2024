@@ -8,7 +8,7 @@ void twoDigitalButtonsTwoMotorsHandler(
 void setTwoMotorsVoltage(int voltage, const pros::Motor motorA,
                          pros::Motor motorB);
 
-class OneToggleButtonsTwoMotorsHandler : protected ToggleButton{
+class oneToggleButtonsTwoMotorsHandler : private ToggleButton{
 
 private:
   pros::Motor* motorA;
@@ -17,7 +17,7 @@ private:
   bool areMotorsSpining = false;
 
 public:
-  OneToggleButtonsTwoMotorsHandler(const pros::controller_digital_e_t button,
+  oneToggleButtonsTwoMotorsHandler(const pros::controller_digital_e_t button,
                                    pros::Motor* motorA, pros::Motor* motorB,
                                    const float voltageMultiplayer = 1);
   void updateMotors();

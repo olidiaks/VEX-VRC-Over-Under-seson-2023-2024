@@ -5,10 +5,7 @@ class ToggleButton {
 private:
   bool isPressed;
   bool wasPressedLastTimeWhenWasCheck = false;
-
-  protected:
   const pros::controller_digital_e_t button;
-
 
 public:
   ToggleButton(const pros::controller_digital_e_t button);

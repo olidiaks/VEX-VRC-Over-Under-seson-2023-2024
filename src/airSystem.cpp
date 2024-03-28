@@ -1,5 +1,4 @@
 #include "main.h"
-#include "pros/misc.h"
 
 bool isLeftOpen = false;
 bool isRightOpen = false;

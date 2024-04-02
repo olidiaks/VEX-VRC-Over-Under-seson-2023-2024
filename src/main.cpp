@@ -76,13 +76,6 @@ void opcontrol() {
         leftTriaballGraberMotor, rightTriaballGraberMotor, 12000);
     airSystemSetAirSystemBasedOnControllerAction();
     selfDriving.writeAutonomusStream();
-
-    pros::lcd::print(2, "Launcher %.0f %.0f", launcherAMotor.get_temperature(),
-                     launcherBMotor.get_temperature());
-    pros::lcd::print(3, "Drive train: lf %.0f lb %.0f rf %.0f rb %.0f",
-                     leftFrontDiveTrainMotor.get_temperature(),
-                     leftBackDiveTrainMotor.get_temperature(),
-                     rightFrontDiveTrainMotor.get_temperature(),
-                     rightBackDiveTrainMotor.get_temperature());
+    printTemperatureOfMotrs();
   }
 }

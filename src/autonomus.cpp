@@ -13,7 +13,7 @@ void Autonomus::readAutonomusStream() {
     asm("nop"); */
 
   controller.rumble("..");
-  for (int i = 0; sizeof(autonomusStream) > i; i += 8) {
+  for (int i = 0; sizeof(autonomusStream) > i; i += 6) {
     setTwoMotorsVoltage(*(pAutonomusStream + 0 + i), launcherAMotor,
                         launcherBMotor);
     setTwoMotorsVoltage(*(pAutonomusStream + 1 + i), leftTriaballGraberMotor,
@@ -29,10 +29,10 @@ void Autonomus::readAutonomusStream() {
                            rightFrontDiveTrainMotor.get_position() -
                            rightBackDiveTrainMotor.get_position()));
       pros::delay(10);
-    } while (fabs(*(pAutonomusStream + i + 6) -
+    } while (fabs(*(pAutonomusStream + i + 4) -
                   leftFrontDiveTrainMotor.get_position() -
                   leftBackDiveTrainMotor.get_position()) > 10 &&
-             fabs(*(pAutonomusStream + i + 7) -
+             fabs(*(pAutonomusStream + i + 5) -
                   rightFrontDiveTrainMotor.get_position() -
                   rightBackDiveTrainMotor.get_position()) > 10);
   }

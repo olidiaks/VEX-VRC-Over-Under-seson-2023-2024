@@ -35,6 +35,7 @@ void Autonomus::readAutonomusStream() {
              fabs(*(pAutonomusStream + i + 5) -
                   rightFrontDiveTrainMotor.get_position() -
                   rightBackDiveTrainMotor.get_position()) > 10);
+    printTemperatureOfMotrs();
   }
   setDriveTrain(0, 0);
 }

@@ -18,5 +18,5 @@ pros::adi::DigitalOut rightWing(3);
 pros::Controller controller(pros::E_CONTROLLER_MASTER);
 
 //sensors
-pros::IMU inertial(2);
+pros::IMU inertial(7);
 

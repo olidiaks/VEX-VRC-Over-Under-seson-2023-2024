@@ -62,9 +62,6 @@ void autonomous() {
  */
 
 void opcontrol() {
-  while (inertial.is_calibrating()) {
-    printf("inertail sensor is calibrating");
-  }
   Autonomus selfDriving;
   controller.rumble("..");
 

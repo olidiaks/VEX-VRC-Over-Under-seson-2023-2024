@@ -45,9 +45,9 @@ void competition_initialize() {}
  */
 void autonomous() {
   setDriveTrain(12000, 12000);
-  pros::delay(10000);
-  setDriveTrain(-12000, 12000);
-  pros::delay(5000);
+  pros::delay(8000);
+  setDriveTrain(-12000, -12000);
+  pros::delay(1500);
 }
 
 /**

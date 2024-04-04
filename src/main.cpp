@@ -1,7 +1,7 @@
 #include "main.h"
 #include "pros/llemu.hpp"
+#include "pros/motors.h"
 #include "pros/rtos.hpp"
-#include <cstdio>
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.
@@ -12,6 +12,8 @@
 void initialize() {
   pros::lcd::initialize();
   pros::lcd::set_text(1, "Porter HS is coming for you.");
+  launcherAMotor.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+  launcherBMotor.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 }
 
 /**

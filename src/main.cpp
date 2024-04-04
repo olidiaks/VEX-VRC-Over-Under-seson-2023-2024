@@ -1,5 +1,6 @@
 #include "main.h"
 #include "pros/llemu.hpp"
+#include "pros/rtos.hpp"
 #include <cstdio>
 
 /**
@@ -43,8 +44,10 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
-  Autonomus selfDriving;
-  selfDriving.readAutonomusStream();
+  setDriveTrain(12000, 12000);
+  pros::delay(10000);
+  setDriveTrain(-12000, 12000);
+  pros::delay(5000);
 }
 
 /**

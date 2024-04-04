@@ -50,6 +50,7 @@ void autonomous() {
   pros::delay(8000);
   setDriveTrain(-12000, -12000);
   pros::delay(1500);
+  setDriveTrain(0, 0);
 }
 
 /**

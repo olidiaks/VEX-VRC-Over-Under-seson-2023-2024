@@ -8,9 +8,6 @@ extern const double autonomusStream[];
 
 void Autonomus::readAutonomusStream() {
   const double *pAutonomusStream = autonomusStream;
-  /* inertial.reset();
-  while (inertial.is_calibrating())
-    asm("nop"); */
 
   controller.rumble("..");
   for (int i = 0; sizeof(autonomusStream) > i; i += 6) {

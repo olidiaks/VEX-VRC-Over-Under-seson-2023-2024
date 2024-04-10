@@ -1,4 +1,4 @@
-**** This project is finish because of competition for us.
+This project is finish because of competition for us.
 Also this mean I will not spend more time to contribute this project. Fill free to fork if you want to use.
 
 This project is code for robot for competition Vex Robotics VRC Over under played in season 2023/2024.
